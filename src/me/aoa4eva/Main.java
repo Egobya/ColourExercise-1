@@ -5,6 +5,17 @@ import java.util.Scanner;
 
 public class Main {
 
+
+    public static void showColours(ArrayList<String> colours)
+    {
+
+        for(String aColour:colours)
+        {
+            System.out.println(aColour);
+        }
+    }
+
+
     public static void main(String[] args) {
 
         /* This application creates an array list of colours.
@@ -24,46 +35,47 @@ public class Main {
         colours.add("green");
         colours.add("mauve");
 
-        System.out.println("1. Add a colour");
-        System.out.println("2. Delete a colour ");
-        System.out.println("3. Show the colour list");
-        System.out.println("4. Quit");
-        System.out.println("Enter a number to select a menu option:");
-        option = keyboard.nextInt();
-        keyboard.nextLine();
+        do{
 
-        if(option==1)
-        {
-            System.out.println("Enter the colour to add to the arraylist of colours");
-            enterColour=keyboard.nextLine();
-            colours.add(enterColour);
-            System.out.println(colours.get(colours.indexOf(enterColour)));
-
-        }
-
-        if(option==2)
-        {
-            System.out.println("Enter the colour to delete from the arraylist of colours:");
-            enterColour=keyboard.nextLine().toLowerCase();;
-            if(colours.contains(enterColour))
-                colours.remove(enterColour);
-            else
-                System.out.println("Unable to find that colour");
-        }
+            System.out.println("1. Add a colour");
+            System.out.println("2. Delete a colour ");
+            System.out.println("3. Show the colour list");
+            System.out.println("4. Quit");
+            System.out.println("Enter a number to select a menu option:");
+            option = keyboard.nextInt();
+            keyboard.nextLine();
 
 
-
-        if(option==3)
-        {
-            for(int counter=0; counter<colours.size(); counter++)
+            if(option==1)
             {
-                System.out.println(colours.get(counter));
+                System.out.println("Enter the colour to add to the arraylist of colours");
+                enterColour=keyboard.nextLine();
+                colours.add(enterColour);
+                System.out.println(colours.get(colours.indexOf(enterColour)));
+
+            }else if(option==2)
+            {
+                System.out.println("Enter the colour to delete from the arraylist of colours:");
+                enterColour=keyboard.nextLine().toLowerCase();
+                if(colours.contains(enterColour))
+                    colours.remove(enterColour);
+                else
+                    System.out.println("Unable to find that colour");
+            }else if(option==3)
+            {
+              showColours(colours);
             }
-        }
+
+            else
+            {
+                System.out.println("Invalid option. Please enter a number (1 to 4) ");
+            }
 
 
-
-
+        }while(option!=4);
     }
+
+
+
 
 }
